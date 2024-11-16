@@ -193,6 +193,7 @@ interface WeekOption {
     <div
       *ngIf="showWeekSelector"
       class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50"
+      (click)="closeWeekSelector()"
     >
       <div class="relative p-5 border w-96 shadow-lg rounded-md bg-white">
         <div class="mt-3 text-center">
@@ -290,5 +291,9 @@ export class SalutationComponent implements OnInit {
   goToCalendar(): void {
     // TODO: Implement navigation to calendar page
     this.router.navigate(['/calendar']);
+  }
+
+  closeWeekSelector(): void {
+    this.showWeekSelector = false;
   }
 }

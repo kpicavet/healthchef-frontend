@@ -5,7 +5,7 @@ import { DashboardService } from './dashboard/services/dashboard.service';
 import { SettingsComponent } from './settings/pages/settings.component';
 import { RecipeOverviewComponent } from './recipes/recipe-overview.component';
 import { RecipeComponent } from './recipes/recipe.component';
-import {SubscriptionService} from "./settings/services/subscription.service";
+import { SubscriptionService } from './settings/services/subscription.service';
 
 export const applicationRoutes: Routes = [
   {
@@ -27,6 +27,11 @@ export const applicationRoutes: Routes = [
         component: RecipeOverviewComponent,
       },
       {
+        path: 'planning',
+        loadChildren: () =>
+          import('./planning/planning.routes').then((m) => m.planningRoutes),
+      },
+      {
         path: 'recipes/:id',
         component: RecipeComponent,
       },
@@ -34,7 +39,7 @@ export const applicationRoutes: Routes = [
         path: 'settings',
         component: SettingsComponent,
         providers: [SubscriptionService],
-      }
+      },
     ],
   },
 ];
